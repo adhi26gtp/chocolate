@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Chocolate Day 🍫</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    height:100vh;
+    background:linear-gradient(135deg,#4a240f,#9c5a2e);
+    font-family:'Segoe UI',sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+/* FRAME */
+.frame{
+    width:540px;
+    height:360px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(12px);
+    border-radius:28px;
+    border:1px solid rgba(255,255,255,0.25);
+    box-shadow:0 20px 45px rgba(0,0,0,0.45);
+    padding:30px;
+    position:relative;
+    color:white;
+}
+
+/* TABS */
+.tab{
+    position:absolute;
+    inset:30px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    transform:translateY(25px);
+    transition:opacity .7s ease, transform .7s ease;
+    pointer-events:none;
+}
+
+.tab.active{
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+}
+
+/* INTRO */
+.intro{text-align:center}
+.intro h1{font-size:2.2em;margin-top:10px}
+.intro p{opacity:.9}
+
+button{
+    margin-top:20px;
+    padding:14px 36px;
+    border:none;
+    border-radius:30px;
+    background:white;
+    color:#6b3a18;
+    font-size:1em;
+    cursor:pointer;
+}
+
+/* CONTENT */
+.content{
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.text{
+    font-size:1.9em;
+    white-space:nowrap;
+}
+
+/* HERO CHOCOLATE */
+.hero-choco{
+    height:95px;
+    border-radius:14px;
+    cursor:pointer;
+    transition:transform .3s ease, box-shadow .3s ease;
+}
+.hero-choco:hover{
+    transform:scale(1.08);
+    box-shadow:0 10px 26px rgba(0,0,0,.45);
+}
+
+/* BUBU */
+.bubu{
+    position:absolute;
+    width:55px;
+    opacity:.75;
+}
+.tl{top:10px;left:10px}
+.tr{top:10px;right:10px}
+.bl{bottom:10px;left:10px}
+.br{bottom:10px;right:10px}
+
+/* CHOCOLATE SHOWER */
+.choco{
+    position:fixed;
+    top:-40px;
+    font-size:34px;
+    animation:fall linear forwards;
+    z-index:10;
+}
+@keyframes fall{
+    to{
+        transform:translateY(120vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* FINAL OVERLAY */
+.final-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.45);
+    backdrop-filter:blur(5px);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .8s ease;
+    z-index:20;
+}
+
+.final-overlay.show{
+    opacity:1;
+}
+
+.final-overlay h2{
+    font-size:2.4em;
+    margin-bottom:15px;
+}
+
+.countdown{
+    font-size:1.3em;
+    margin-top:10px;
+    opacity:.95;
+}
+</style>
+</head>
+
+<body>
+
+<div class="frame">
+
+<!-- TAB 0 -->
+<div class="tab active">
+    <div class="intro">
+        <img src="images/bubu_choco.gif" width="180">
+        <h1>Happy Chocolate Day 🍫</h1>
+        <p>A little sweetness, just for you</p>
+        <button onclick="nextTab()">Click Here 💖</button>
+    </div>
+</div>
+
+<!-- TAB 1 -->
+<div class="tab">
+    <div class="content">
+        <div class="text">Hey my</div>
+        <img src="images/chocopie.png" class="hero-choco" onclick="nextTab()">
+    </div>
+    <img class="bubu tl" src="images/bubu_choco.gif">
+    <img class="bubu br" src="images/bubu_choco.gif">
+</div>
+
+<!-- TAB 2 -->
+<div class="tab">
+    <div class="content">
+        <div class="text">You make my heart go as</div>
+        <img src="images/kitkat.png" class="hero-choco" onclick="nextTab()">
+    </div>
+    <img class="bubu tr" src="images/bubu_choco.gif">
+    <img class="bubu bl" src="images/bubu_choco.gif">
+</div>
+
+<!-- TAB 3 -->
+<div class="tab">
+    <div class="content">
+        <div class="text">My mind gets</div>
+        <img src="images/fuse.png" class="hero-choco" onclick="nextTab()">
+        <div class="text">when I see you</div>
+    </div>
+    <img class="bubu tl" src="images/bubu_choco.gif">
+    <img class="bubu br" src="images/bubu_choco.gif">
+</div>
+
+<!-- TAB 4 -->
+<div class="tab">
+    <div class="content">
+        <div class="text">You are my true</div>
+        <img src="images/gems.png" class="hero-choco" onclick="nextTab()">
+        <div class="text">in life</div>
+    </div>
+    <img class="bubu tr" src="images/bubu_choco.gif">
+    <img class="bubu bl" src="images/bubu_choco.gif">
+</div>
+
+<!-- TAB 5 -->
+<div class="tab">
+    <div class="content">
+        <div class="text">I give you</div>
+        <img src="images/5star.png" class="hero-choco" onclick="finalEffect()">
+        <div class="text">for being with me</div>
+    </div>
+    <img class="bubu tl" src="images/bubu_choco.gif">
+    <img class="bubu tr" src="images/bubu_choco.gif">
+</div>
+
+</div>
+
+<!-- FINAL OVERLAY -->
+<div class="final-overlay" id="final">
+    <h2>I love you my sweet chokkkii Swethuuu 💖🍫</h2>
+    <div class="countdown" id="countdown"></div>
+</div>
+
+<script>
+let current=0;
+const tabs=document.querySelectorAll('.tab');
+
+function nextTab(){
+    tabs[current].classList.remove('active');
+    current++;
+    if(current<tabs.length){
+        tabs[current].classList.add('active');
+    }
+}
+
+/* FINAL EFFECT */
+function finalEffect(){
+    document.getElementById("final").classList.add("show");
+    startChocolateRain();
+    startCountdown();
+}
+
+/* HEAVY CHOCOLATE SHOWER */
+function startChocolateRain(){
+    const items=["🍫","🍩","🍪","💖","🍬"];
+    const interval=setInterval(()=>{
+        for(let i=0;i<5;i++){   // 👈 HEAVY rain
+            const c=document.createElement("div");
+            c.className="choco";
+            c.innerText=items[Math.floor(Math.random()*items.length)];
+            c.style.left=Math.random()*100+"vw";
+            c.style.animationDuration=(Math.random()*2+3)+"s";
+            document.body.appendChild(c);
+            setTimeout(()=>c.remove(),5000);
+        }
+    },120);
+
+    setTimeout(()=>clearInterval(interval),4000);
+}
+
+/* VALENTINE COUNTDOWN */
+function startCountdown(){
+    const el=document.getElementById("countdown");
+    const valentine=new Date(new Date().getFullYear(),1,14);
+
+    setInterval(()=>{
+        const now=new Date();
+        const diff=valentine-now;
+        if(diff>0){
+            const d=Math.floor(diff/(1000*60*60*24));
+            const h=Math.floor((diff/(1000*60*60))%24);
+            const m=Math.floor((diff/(1000*60))%60);
+            el.innerText=`Valentine’s Day in ${d} days ${h} hrs ${m} mins ❤️`;
+        }else{
+            el.innerText="💘 Happy Valentine’s Day 💘";
+        }
+    },1000);
+}
+</script>
+
+</body>
+</html>
